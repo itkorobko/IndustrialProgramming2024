@@ -1,18 +1,53 @@
 package lab1pack.Lab1_project;
-import java.util.Stack;
 import java.util.ArrayList;
-public class OPZ {
+import java.util.HashMap;
+import java.util.Stack;
+
+public class ExpressionProcesser {
 	
-	public ArrayList<String> list_of_operands=new ArrayList<String>();
+	private ArrayList<String> list_of_operands=new ArrayList<String>();
     private String source_line;
     private String line_in_OPZ;  
     
     
-    void setSourceLine(String future_source_line) {
-    	this.source_line=future_source_line;
-    }
     
-    void makeListOfOperands() {
+    
+   public HashMap<String,String> processLineWithValue(String line_with_value) throws Exception {
+			String temp_var="";
+			String temp_value="";
+			HashMap<String, String> var_and_value=new HashMap<>(1);
+			boolean ravno_index=false;
+			for(int i=0; i<line_with_value.length();i++) {
+				if(line_with_value.charAt(i)=='=') {
+					ravno_index=true;
+					continue;
+				}
+				if(!ravno_index)
+				    temp_var+=line_with_value.charAt(i);
+				else temp_value+=line_with_value.charAt(i);
+			}
+			if(!temp_var.isEmpty() && !temp_value.isEmpty())
+			    var_and_value.put(temp_var, temp_value);
+			else throw new Exception("Incorrect expresion!!!!");
+			return var_and_value;
+	}
+    
+     
+    public double calculateLineWithExpression(String line_with_expression, HashMap<String,String> vars_and_values)throws Exception{
+    	this.source_line=line_with_expression;
+    	makeListOfOperands();
+    	for(int i=0;i<list_of_operands.size();i++) {
+				if(vars_and_values.get(list_of_operands.get(i))!=null)
+					list_of_operands.set(i, vars_and_values.get(list_of_operands.get(i)));
+			
+		}
+    	makeOPZ();
+    	return calculateOPZ();
+    	
+    }
+
+
+    private void makeListOfOperands() {
     	for(int i=0;i<source_line.length();i++) {
     		Temporary_Symbol sym=new Temporary_Symbol();
     		sym.setSymbol(source_line.charAt(i));
@@ -33,7 +68,7 @@ public class OPZ {
     	}
     }
     
-    String makeOPZ() throws Exception {
+    private String makeOPZ() throws Exception {
     	String opz_string="";
     	Stack<Character> st=new Stack<Character>();
     	int i1=0;
@@ -94,7 +129,7 @@ public class OPZ {
     	return opz_string;
     }
     
-    double calculateOPZ() throws Exception{
+    private double calculateOPZ() throws Exception{
 		Temporary_Symbol sym=new Temporary_Symbol();
 		Stack<Double> st= new Stack<Double>();
 		for(int i=0; i<line_in_OPZ.length(); i++) {

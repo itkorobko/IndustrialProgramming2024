@@ -1,4 +1,4 @@
-package Lab1_pack.Lab1_project;
+package IndProgramming2024Package.IndProgramming2024Project;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
