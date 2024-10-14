@@ -5,9 +5,9 @@ import java.util.Stack;
 
 public class ExpressionProcesser {
 	
-	private ArrayList<String> list_of_operands=new ArrayList<String>();
-    private String source_line;
-    private String line_in_OPZ;  
+	protected ArrayList<String> list_of_operands=new ArrayList<String>();
+    protected String source_line;
+    protected String line_in_OPZ;  
     
     
     
@@ -47,7 +47,7 @@ public class ExpressionProcesser {
     }
 
 
-    private void makeListOfOperands() {
+    protected void makeListOfOperands() {
     	for(int i=0;i<source_line.length();i++) {
     		TemporarySymbol sym=new TemporarySymbol();
     		sym.setSymbol(source_line.charAt(i));
@@ -68,7 +68,7 @@ public class ExpressionProcesser {
     	}
     }
     
-    private String makeOPZ() throws Exception {
+    protected String makeOPZ() throws Exception {
     	String opz_string="";
     	Stack<Character> st=new Stack<Character>();
     	int i1=0;
@@ -129,7 +129,7 @@ public class ExpressionProcesser {
     	return opz_string;
     }
     
-    private double calculateOPZ() throws Exception{
+    protected double calculateOPZ() throws Exception{
 		TemporarySymbol sym=new TemporarySymbol();
 		Stack<Double> st= new Stack<Double>();
 		for(int i=0; i<line_in_OPZ.length(); i++) {
