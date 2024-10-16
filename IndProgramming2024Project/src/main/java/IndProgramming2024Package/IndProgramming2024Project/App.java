@@ -9,7 +9,7 @@ public class App
 		ArrayList<String> lines_with_expression= new ArrayList<String>();
 		HashMap<String, String> vars_and_values=new HashMap<String, String>();
 		
-		try (BufferedReader reader=new BufferedReader(new FileReader("hehe.txt"));){
+		try (BufferedReader reader=new BufferedReader(new FileReader("hehe.txt"))){
 			String r_line=reader.readLine();			
 			while(r_line!=null) {
 				boolean ravno_indicator=false;
