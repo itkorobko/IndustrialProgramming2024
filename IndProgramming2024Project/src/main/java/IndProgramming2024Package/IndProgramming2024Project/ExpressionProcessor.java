@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 
-public class ExpressionProcesser {
+public class ExpressionProcessor {
 	
 	protected ArrayList<String> list_of_operands=new ArrayList<String>();
     protected String source_line;

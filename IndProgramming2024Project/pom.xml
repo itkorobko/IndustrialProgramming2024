@@ -25,6 +25,31 @@
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
     </dependency>
+    
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20210307</version>
+    </dependency>
+    
+    <dependency>
+    <groupId>org.jsoup</groupId>
+    <artifactId>jsoup</artifactId>
+    <version>1.14.3</version> <!-- Проверьте наличие последней версии -->
+    </dependency>
+    
+    <dependency>
+    <groupId>org.yaml</groupId>
+    <artifactId>snakeyaml</artifactId>
+    <version>1.30</version> <!-- Убедитесь, что используете последнюю версию -->
+    </dependency>
+    
+    <dependency>
+    <groupId>com.google.protobuf</groupId>
+    <artifactId>protobuf-java</artifactId>
+    <version>4.28.3</version> <!-- Используйте последнюю версию -->
+</dependency>
+
   </dependencies>
 
   <build>
@@ -78,4 +103,13 @@
       </plugin>
     </plugins>
   </reporting>
+  
+  
+  
+  
 </project>
+
+
+
+
+

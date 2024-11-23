@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<expressions_and_results>
+    <expresssion_and_result>
+        <expression>he+he</expression>
+        <result>10.0</result>
+    </expresssion_and_result>
+    <expresssion_and_result>
+        <expression>po+i-9*(12-po)</expression>
+        <result>-25.0</result>
+    </expresssion_and_result>
+    <expresssion_and_result>
+        <expression>ho+9</expression>
+        <result>17.0</result>
+    </expresssion_and_result>
+    <expresssion_and_result>
+        <expression>delta-9+14*(fi-lambda)</expression>
+        <result>13.0</result>
+    </expresssion_and_result>
+    <expresssion_and_result>
+        <expression>be+ba-8</expression>
+        <result>25.0</result>
+    </expresssion_and_result>
+    <expresssion_and_result>
+        <expression>(goga+boba)/12</expression>
+        <result>1.6666666666666667</result>
+    </expresssion_and_result>
+    <expresssion_and_result>
+        <expression>tumba+umba</expression>
+        <result>26.0</result>
+    </expresssion_and_result>
+    <expresssion_and_result>
+        <expression>babka-4*(yoshka-kashchey)/bessmertny</expression>
+        <result>8.869565217391305</result>
+    </expresssion_and_result>
+    <expresssion_and_result>
+        <expression>(a+b)*8-12+c/7+2</expression>
+        <result>47.285714285714285</result>
+    </expresssion_and_result>
+    <expresssion_and_result>
+        <expression>(a+b)*4-12+c/7+2</expression>
+        <result>19.285714285714285</result>
+    </expresssion_and_result>
+</expressions_and_results>

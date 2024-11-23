@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<expressions>
+  <expression>po+i-9*(12-po)</expression>
+  <var_and_value>
+    <var>po</var>
+    <value>8</value>
+  </var_and_value>
+  <var_and_value>
+    <var>i</var>
+    <value>3</value>
+  </var_and_value>
+</expressions>
