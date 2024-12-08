@@ -8,8 +8,14 @@ public class App
 	public static void main(String[] args) {
 		ArrayList<String> lines_with_expression= new ArrayList<String>();
      	HashMap<String, String> vars_and_values=new HashMap<String, String>();
-       //     	
+   	
      	try{
+     		
+     		
+
+     		
+     		
+     		
      		FileProcessor protobuf_input=new FileProcessor("hehe.proto");
      		protobuf_input.readProtobuf(lines_with_expression,vars_and_values);
      		FileProcessor yaml_input=new FileProcessor("hehe.yml");
@@ -23,8 +29,8 @@ public class App
      		FileProcessor plain_text_input=new FileProcessor("hehe.txt");
          	plain_text_input.readPlainText(lines_with_expression,vars_and_values);
          	
- 		
-      	
+         	Encryptor.decryptFile("hehe.txt.enc", "hehe_decrypted.txt");
+      	    
          	
      		HashMap<String,Double> expressions_and_results=new HashMap<>();
      		for(int i=0;i<lines_with_expression.size();i++) {
@@ -47,43 +53,47 @@ public class App
      		yaml_output.writeYAML(expressions_and_results);
      		FileProcessor protobuf_output=new FileProcessor("hoho.proto");
      		protobuf_output.writeProtobuf(expressions_and_results);
+     		
+     		
+     		
+     		
+     		Encryptor.encryptFile("hoho.txt", "hoho.txt.enc");
+     		
+     		
+     		
+     		
+     		String rarFilePath = "C:\\Users\\HP\\git\\IndustrialProgramming2024\\IndProgramming2024Project\\hehe.txt.rar"; 
+    		String filesToArchive = "C:\\Users\\HP\\git\\IndustrialProgramming2024\\IndProgramming2024Project\\hehe.txt";
+     		ArchivatorRAR.archivate(rarFilePath, filesToArchive);
+     		   		
+     		String outputPath="C:\\Users\\HP\\git\\IndustrialProgramming2024\\IndProgramming2024Project\\dearchivated files";
+    		ArchivatorRAR.dearchivate(rarFilePath, outputPath);
+    		
+    		
+    		
+    		
+    		
+    		String zipFilePath = "C:\\Users\\HP\\git\\IndustrialProgramming2024\\IndProgramming2024Project\\ZIPArchive.zip"; 
+    		   String[] filesToZip = {
+    		            "C:\\Users\\HP\\git\\IndustrialProgramming2024\\IndProgramming2024Project\\hehe.txt",
+    		            "C:\\Users\\HP\\git\\IndustrialProgramming2024\\IndProgramming2024Project\\hoho.txt"
+    		        };
+    		   ArchivatorZIP.archivate(zipFilePath, filesToZip);
+    		   
+    		   
+    		   String outputDir ="C:\\Users\\HP\\git\\IndustrialProgramming2024\\IndProgramming2024Project\\dearchivatedZIP";
+    		   ArchivatorZIP.dearchivate(zipFilePath, outputDir);
+    		   
+    		   
+    		   
+    		   
+    		   
      	}
      	catch (Exception ex) {
 		// TODO Auto-generated catch block
 	     	System.out.println("Exception: "+ex.getMessage());
         }
      	
-//		try (BufferedReader reader=new BufferedReader(new FileReader("hehe.txt"))){
-//			String r_line=reader.readLine();			
-//			while(r_line!=null) {
-//				boolean ravno_indicator=false;
-//				for(int i=0;i<r_line.length();i++) {
-//					if(r_line.charAt(i)=='=')
-//						ravno_indicator=true;
-//				}
-//				if(!ravno_indicator)
-//	                lines_with_expression.add(r_line);
-//				else {
-//					ExpressionProcessor expression=new ExpressionProcessor();
-//					vars_and_values.putAll(expression.processLineWithValue(r_line));
-//				}
-//				r_line=reader.readLine();
-//			}		
-//		
-//				for(int i=0;i<lines_with_expression.size();i++) {
-//					ExpressionProcessor expression=new ExpressionProcessor();
-//					double result=expression.calculateLineWithExpression(lines_with_expression.get(i), vars_and_values);
-//					System.out.println(lines_with_expression.get(i));
-//					System.out.println("Result = "+result);
-//				}
-//	    } 	
-//   	    catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	    catch(Exception ex) {
-//		System.out.println(ex.getMessage());
-//	    }
 	}
 	
 }
