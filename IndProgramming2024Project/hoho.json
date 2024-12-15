@@ -1,42 +1,4 @@
-[
-    {
-        "Expression": "he+he",
-        "Result": 10
-    },
-    {
-        "Expression": "po+i-9*(12-po)",
-        "Result": -25
-    },
-    {
-        "Expression": "ho+9",
-        "Result": 17
-    },
-    {
-        "Expression": "delta-9+14*(fi-lambda)",
-        "Result": 13
-    },
-    {
-        "Expression": "be+ba-8",
-        "Result": 25
-    },
-    {
-        "Expression": "(goga+boba)/12",
-        "Result": 1.6666666666666667
-    },
-    {
-        "Expression": "tumba+umba",
-        "Result": 26
-    },
-    {
-        "Expression": "babka-4*(yoshka-kashchey)/bessmertny",
-        "Result": 8.869565217391305
-    },
-    {
-        "Expression": "(a+b)*8-12+c/7+2",
-        "Result": 47.285714285714285
-    },
-    {
-        "Expression": "(a+b)*4-12+c/7+2",
-        "Result": 19.285714285714285
-    }
-]
+[{
+    "Expression": "po+i-9*(12-po)",
+    "Result": -25
+}]
