@@ -1,6 +1,6 @@
 package IndProgramming2024Package.IndProgramming2024Project;
 
-public class FileFabric {
+public class FileFactory {
 
 	public MyFileReader createMyFileReader(String filename) throws Exception {
 		StringBuilder filetype_builder=new StringBuilder();

@@ -15,7 +15,7 @@ public class App
      		Scanner in = new Scanner(System.in);
      		String in_filename=new String();
      		in_filename=in.next();
-     		FileFabric file_fabric=new FileFabric();
+     		FileFactory file_fabric=new FileFactory();
      		MyFileReader in_file=file_fabric.createMyFileReader(in_filename);
      		in_file.read(lines_with_expression, vars_and_values);
      	
