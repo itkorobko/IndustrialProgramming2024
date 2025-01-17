@@ -5,10 +5,14 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class PlainTextReader extends MyFileReader {
+public class PlainTextReader implements MyFileReader {
+	private BufferedReader reader;
+	public void setBufferedReader(BufferedReader reader) {
+		this.reader=reader;
+	}
     @Override
 	public void read(ArrayList<String> lines_with_expression, HashMap<String, String> vars_and_values) throws Exception {
-		BufferedReader reader=new BufferedReader(new FileReader(filename));
+		//BufferedReader reader=new BufferedReader(new FileReader(filename));    to be deleted soon
 		String r_line=reader.readLine();			
 		while(r_line!=null) {
 			boolean ravno_indicator=false;

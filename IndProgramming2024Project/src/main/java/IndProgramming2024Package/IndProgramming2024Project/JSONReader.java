@@ -8,10 +8,17 @@ import java.util.Iterator;
 
 import org.json.JSONObject;
 
-public class JSONReader extends MyFileReader  {
+public class JSONReader implements MyFileReader  {
+	private String filename;
+	public void setFilename(String filename) {
+		this.filename=filename;
+	}
+	public String readContent() throws Exception {
+        return new String(Files.readAllBytes(Paths.get(filename)));
+    }
     @Override
 	public void read(ArrayList<String> lines_with_expression, HashMap<String, String> vars_and_values) throws Exception{
-    	String content = new String(Files.readAllBytes(Paths.get(filename)));
+    	String content = readContent();
         JSONObject json_object = new JSONObject(content);
 		 Iterator<String> keys = json_object.keys();
          while (keys.hasNext()) {

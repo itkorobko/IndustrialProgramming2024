@@ -6,7 +6,11 @@ import java.util.HashMap;
 
 import IndProgramming2024Package.IndProgramming2024Project.Hoho.ExpressionsAndResults;
 
-public class ProtobufWriter extends MyFileWriter{
+public class ProtobufWriter implements MyFileWriter{
+	private String filename;
+	public void setFilename(String filename) {
+		this.filename=filename;
+	}
 	@Override
 	public void write(HashMap<String, Double> expressions_and_results) throws Exception{
 		FileOutputStream output_stream = new FileOutputStream("expressions_and_results.bin");

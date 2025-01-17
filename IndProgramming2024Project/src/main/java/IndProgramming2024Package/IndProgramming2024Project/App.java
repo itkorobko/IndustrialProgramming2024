@@ -6,6 +6,76 @@ import java.util.LinkedHashMap;
 import java.util.Scanner;
 public class App
 {
+	private static MyFileReaderFactory reader;
+	private static MyFileWriterFactory writer;
+    static void initializeReader(String filename) throws Exception{
+    	StringBuilder filetype_builder=new StringBuilder();
+		for(int i=filename.indexOf('.')+1;i<filename.length();i++) {
+			filetype_builder.append(filename.charAt(i));
+		}
+		String filetype=new String(filetype_builder);
+		switch(filetype) {
+		case "txt":{
+			reader=new PlainTextReaderFactory();
+			break;
+		}
+		case "json":{
+			reader=new JSONReaderFactory();
+			break;
+		}
+		case "xml":{
+			reader=new XMLReaderFactory();
+			break;
+		}
+		case "html":{
+			reader=new HTMLReaderFactory();
+			break;
+		}
+		case "yml":{
+			reader=new YAMLReaderFactory();
+			break;
+		}
+		case "proto":{
+			reader=new ProtobufReaderFactory();
+			break;
+		}
+		default: throw new Exception("Incorrect file type :"+filetype);
+		}
+    }
+    static void initializeWriter(String filename) throws Exception{
+    	StringBuilder filetype_builder=new StringBuilder();
+		for(int i=filename.indexOf('.')+1;i<filename.length();i++) {
+			filetype_builder.append(filename.charAt(i));
+		}
+		String filetype=new String(filetype_builder);
+		switch(filetype) {
+		case "txt":{
+			writer=new PlainTextWriterFactory();
+			break;
+		}
+		case "json":{
+			writer=new JSONWriterFactory();
+			break;
+		}
+		case "xml":{
+			writer=new XMLWriterFactory();
+			break;
+		}
+		case "html":{
+			writer=new HTMLWriterFactory();
+			break;
+		}
+		case "yml":{
+			writer=new YAMLWriterFactory();
+			break;
+		}
+		case "proto":{
+			writer=new ProtobufWriterFactory();
+			break;
+		}
+		default: throw new Exception("Incorrect file type :"+filetype);
+		}
+    }
 	public static void main(String[] args) {
 		ArrayList<String> lines_with_expression= new ArrayList<String>();
      	HashMap<String, String> vars_and_values=new HashMap<String, String>();
@@ -15,9 +85,8 @@ public class App
      		Scanner in = new Scanner(System.in);
      		String in_filename=new String();
      		in_filename=in.next();
-     		FileFactory file_fabric=new FileFactory();
-     		MyFileReader in_file=file_fabric.createMyFileReader(in_filename);
-     		in_file.read(lines_with_expression, vars_and_values);
+     		initializeReader(in_filename);
+     		reader.read(in_filename,lines_with_expression, vars_and_values);
      	
      		
      		
@@ -51,8 +120,8 @@ public class App
      		System.out.println("Enter filename for writing");
      		String out_filename=new String();
      		out_filename=in.next();
-     		MyFileWriter out_file=file_fabric.createMyFileWriter(out_filename);
-     		out_file.write(expressions_and_results);
+     		initializeWriter(out_filename);
+     		writer.write(out_filename,expressions_and_results);
      		in.close();
      		
      		

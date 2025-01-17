@@ -10,13 +10,17 @@ import java.util.Map;
 import IndProgramming2024Package.IndProgramming2024Project.Hehe.Expressions;
 import IndProgramming2024Package.IndProgramming2024Project.Hehe.VarsAndValues;
 
-public class ProtobufReader extends MyFileReader {
+public class ProtobufReader implements MyFileReader {
 
+	private String filename;
+	public void setFilename(String filename) {
+		this.filename=filename;
+	}
 	 @Override
      public void read(ArrayList<String> lines_with_expression, HashMap<String, String> vars_and_values) throws Exception {
 		 if(true) {
 	     		//makeBinProtobuf();  Here is just an example of function, should be the other realization
-			 FileOutputStream expressions_stream = new FileOutputStream("expressions.bin");
+			    FileOutputStream expressions_stream = new FileOutputStream("expressions.bin");
 				FileOutputStream vars_and_values_stream = new FileOutputStream("vars_and_values.bin");
 				ByteArrayOutputStream byte_expressions_stream = new ByteArrayOutputStream();
 				ByteArrayOutputStream byte_vars_and_values_stream = new ByteArrayOutputStream();
@@ -55,6 +59,7 @@ public class ProtobufReader extends MyFileReader {
 				}
 			}
 	 }
+
 	 
 }
  

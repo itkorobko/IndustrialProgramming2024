@@ -1,4 +1,4 @@
 [{
-    "Expression": "po+i-9*(12-po)",
-    "Result": -25
+    "Expression": "(a+b)*4-12+c/7+2",
+    "Result": 19.285714285714285
 }]

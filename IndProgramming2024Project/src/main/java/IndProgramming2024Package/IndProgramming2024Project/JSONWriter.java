@@ -7,10 +7,17 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class JSONWriter extends MyFileWriter {
+public class JSONWriter implements MyFileWriter {
+	private String filename;
+	public void setFilename(String filename) {
+		this.filename=filename;
+	}
+    public FileWriter getWriter(String fileName) throws Exception {
+        return new FileWriter(fileName);
+    }
 	 @Override
 	 public void write(HashMap<String, Double> expressions_and_results) throws Exception{
-		 FileWriter writer=new FileWriter(filename);
+		 FileWriter writer=getWriter(filename);
 			JSONArray json_array=new JSONArray();
 			
 			for(Map.Entry<String, Double> entry : expressions_and_results.entrySet()) {
