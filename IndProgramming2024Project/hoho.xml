@@ -1,7 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<expressions_and_results>
-    <expresssion_and_result>
-        <expression>delta-9+14*(fi-lambda)</expression>
-        <result>13.0</result>
-    </expresssion_and_result>
-</expressions_and_results>
+<expressions_and_results/>

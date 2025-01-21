@@ -19,12 +19,6 @@ public class ArchivatorRAR {
             processBuilder.directory(new File(outputPath));
             Process process = processBuilder.start();
             int exitCode = process.waitFor();
-//
-//            if (exitCode == 0) {
-//                System.out.println("Дехаривирование завершено успешно.");
-//            } 
-//            else {
-//                System.out.println("Ошибка при деархивации. Код завершения: " + exitCode);
-//	        }
+        }
 	}
-}
+

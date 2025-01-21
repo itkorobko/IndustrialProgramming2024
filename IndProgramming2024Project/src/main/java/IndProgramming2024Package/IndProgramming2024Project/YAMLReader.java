@@ -13,17 +13,13 @@ import org.yaml.snakeyaml.Yaml;
 
 public class YAMLReader implements MyFileReader {
 
-	private String filename;
-	public void setFilename(String filename) {
-		this.filename=filename;
+	private String content;
+	public void setContent(String content) {
+		this.content=content;
 	}
-	public String readContent() throws Exception {
-        return new String(Files.readAllBytes(Paths.get(filename)));
-    }
 	  @Override
     public void read(ArrayList<String> lines_with_expression, HashMap<String, String> vars_and_values) throws Exception{
 	    Yaml yaml = new Yaml();
-		String content = readContent();
 	    HashMap<String, Object> yaml_map = yaml.load(content); 
 	  	for(Map.Entry<String,Object> entry : yaml_map.entrySet()) {
 	       	Pattern pattern_of_var = Pattern.compile("([a-zA-Z_][a-zA-Z0-9_]*)");

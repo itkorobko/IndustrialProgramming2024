@@ -12,16 +12,12 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.*;
 
 public class HTMLReader implements MyFileReader {
-	private String filename;
-	public void setFilename(String filename) {
-		this.filename=filename;
+	private String content;
+	public void setContent(String content) {
+		this.content=content;
 	}
-	public String readContent() throws Exception {
-        return new String(Files.readAllBytes(Paths.get(filename)));
-    }
 	 @Override
 	 public void read(ArrayList<String> lines_with_expression, HashMap<String, String> vars_and_values) throws Exception{
-		 String content = readContent();
 	     Document document = Jsoup.parse(content);
 		 for (Element paragraph : document.select("p")) {
 			 Pattern pattern = Pattern.compile("([a-zA-Z_][a-zA-Z0-9_]*)=(\\d+)");
