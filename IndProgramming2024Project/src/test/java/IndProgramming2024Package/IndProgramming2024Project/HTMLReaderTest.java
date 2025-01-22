@@ -7,16 +7,16 @@ import org.jsoup.nodes.Element;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import readersAndWriters.HTMLInputProcessor;
 public class HTMLReaderTest extends TestCase {
-    private HTMLReader htmlReader;
+    private HTMLInputProcessor htmlReader;
     private HashMap<String, String> varsAndValues;
     private ArrayList<String> linesWithExpression;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        htmlReader = new HTMLReader();
+        htmlReader = new HTMLInputProcessor();
         varsAndValues = new HashMap<>();
         linesWithExpression = new ArrayList<>();
     }
@@ -25,7 +25,7 @@ public class HTMLReaderTest extends TestCase {
         String content = "<html><body><p>var1=10</p><p>This is an expression.</p></body></html>";
         htmlReader.setContent(content);
         
-        htmlReader.read(linesWithExpression, varsAndValues);
+        htmlReader.processInput(linesWithExpression, varsAndValues);
         
         assertEquals(1, varsAndValues.size());
         assertTrue(varsAndValues.containsKey("var1"));
@@ -38,7 +38,7 @@ public class HTMLReaderTest extends TestCase {
         String content = "<html><body><p>var1=10</p><p>var2=20</p><p>This is an expression.</p></body></html>";
         htmlReader.setContent(content);
         
-        htmlReader.read(linesWithExpression, varsAndValues);
+        htmlReader.processInput(linesWithExpression, varsAndValues);
         
         assertEquals(2, varsAndValues.size());
         assertTrue(varsAndValues.containsKey("var1"));
@@ -53,7 +53,7 @@ public class HTMLReaderTest extends TestCase {
         String content = "<html><body><p>This is an expression.</p><p>Another expression.</p></body></html>";
         htmlReader.setContent(content);
         
-        htmlReader.read(linesWithExpression, varsAndValues);
+        htmlReader.processInput(linesWithExpression, varsAndValues);
         
         assertEquals(0, varsAndValues.size());
         assertEquals(2, linesWithExpression.size());
@@ -65,7 +65,7 @@ public class HTMLReaderTest extends TestCase {
         String content = "<html><body><p>var1=10</p><p>This is an expression.</p><p>var2=20</p></body></html>";
         htmlReader.setContent(content);
         
-        htmlReader.read(linesWithExpression, varsAndValues);
+        htmlReader.processInput(linesWithExpression, varsAndValues);
         
         assertEquals(2, varsAndValues.size());
         assertTrue(varsAndValues.containsKey("var1"));
@@ -80,7 +80,7 @@ public class HTMLReaderTest extends TestCase {
         String content = "<html><body><p>invalidVariable10</p><p>This is another expression.</p></body></html>";
         htmlReader.setContent(content);
         
-        htmlReader.read(linesWithExpression, varsAndValues);
+        htmlReader.processInput(linesWithExpression, varsAndValues);
         
         assertEquals(0, varsAndValues.size());
         assertEquals(2, linesWithExpression.size());

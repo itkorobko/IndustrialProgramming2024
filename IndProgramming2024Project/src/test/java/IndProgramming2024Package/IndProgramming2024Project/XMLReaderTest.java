@@ -1,17 +1,18 @@
 package IndProgramming2024Package.IndProgramming2024Project;
 
 import junit.framework.TestCase;
+import readersAndWriters.XMLInputProcessor;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.xml.sax.SAXException;
 public class XMLReaderTest extends TestCase {
-	private XMLReader xmlReader;
+	private XMLInputProcessor xmlReader;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        xmlReader = new XMLReader();
+        xmlReader = new XMLInputProcessor();
     }
 
     public void testReadExpressionsAndVariables() throws Exception {
@@ -30,7 +31,7 @@ public class XMLReaderTest extends TestCase {
 
         ArrayList<String> linesWithExpression = new ArrayList<>();
         HashMap<String, String> varsAndValues = new HashMap<>();
-        xmlReader.read(linesWithExpression, varsAndValues);
+        xmlReader.processInput(linesWithExpression, varsAndValues);
         assertEquals(2, linesWithExpression.size());
         assertEquals("2 + 2", linesWithExpression.get(0));
         assertEquals("3 * 3", linesWithExpression.get(1));
@@ -44,7 +45,7 @@ public class XMLReaderTest extends TestCase {
         xmlReader.setContent(xmlContent);
         ArrayList<String> linesWithExpression = new ArrayList<>();
         HashMap<String, String> varsAndValues = new HashMap<>();
-        xmlReader.read(linesWithExpression, varsAndValues);
+        xmlReader.processInput(linesWithExpression, varsAndValues);
         assertTrue(linesWithExpression.isEmpty());
         assertTrue(varsAndValues.isEmpty());
     }

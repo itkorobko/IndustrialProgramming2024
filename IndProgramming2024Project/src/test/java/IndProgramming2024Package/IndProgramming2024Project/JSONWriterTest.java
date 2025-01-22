@@ -9,15 +9,15 @@ import java.util.HashMap;
 
 import static org.mockito.Mockito.*;
 import junit.framework.TestCase;
-
+import readersAndWriters.JSONOutputMaker;
 public class JSONWriterTest extends TestCase {
-	private JSONWriter jsonWriter;
+	private JSONOutputMaker jsonWriter;
     private FileWriter mockWriter;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        jsonWriter = new JSONWriter();
+        jsonWriter = new JSONOutputMaker();
         mockWriter = mock(FileWriter.class);
         jsonWriter.setWriter(mockWriter);
     }
@@ -26,7 +26,7 @@ public class JSONWriterTest extends TestCase {
         HashMap<String, Double> expressionsAndResults = new HashMap<>();
         expressionsAndResults.put("2 + 2", 4.0);
         expressionsAndResults.put("3 * 3", 9.0);
-        jsonWriter.write(expressionsAndResults);
+        jsonWriter.makeOutput(expressionsAndResults);
         String expectedJson = new JSONArray()
                 .put(new JSONObject().put("Expression", "2 + 2").put("Result", 4.0))
                 .put(new JSONObject().put("Expression", "3 * 3").put("Result", 9.0))
@@ -38,7 +38,7 @@ public class JSONWriterTest extends TestCase {
 
     public void testWriteWithEmptyMap() throws Exception {
         HashMap<String, Double> expressionsAndResults = new HashMap<>();
-        jsonWriter.write(expressionsAndResults);
+        jsonWriter.makeOutput(expressionsAndResults);
         String expectedJson = new JSONArray().toString(4);
         verify(mockWriter).write(expectedJson);
         verify(mockWriter).close();
@@ -50,7 +50,7 @@ public class JSONWriterTest extends TestCase {
             doThrow(new IOException()).when(mockWriter).write(anyString());
             HashMap<String, Double> expressionsAndResults = new HashMap<>();
             expressionsAndResults.put("1 + 1", 2.0);
-            jsonWriter.write(expressionsAndResults);
+            jsonWriter.makeOutput(expressionsAndResults);
             fail("Expected an IOException to be thrown");
         } 
         catch (IOException e) {

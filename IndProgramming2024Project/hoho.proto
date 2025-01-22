@@ -1,5 +1,5 @@
 syntax = "proto3";
-package IndProgramming2024Package.IndProgramming2024Project;
+package readersAndWriters;
 
 message ExpressionsAndResults {
      map<string,double> vars_and_values = 1;

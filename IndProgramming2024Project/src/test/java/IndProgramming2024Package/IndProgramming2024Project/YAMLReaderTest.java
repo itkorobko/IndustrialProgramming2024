@@ -2,14 +2,14 @@ package IndProgramming2024Package.IndProgramming2024Project;
 import junit.framework.TestCase;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import readersAndWriters.YAMLInputProcessor;
 public class YAMLReaderTest extends TestCase {
-    private YAMLReader yamlReader;
+    private YAMLInputProcessor yamlReader;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        yamlReader = new YAMLReader();
+        yamlReader = new YAMLInputProcessor();
     }
 
     public void testReadSingleVariable() throws Exception {
@@ -19,7 +19,7 @@ public class YAMLReaderTest extends TestCase {
         ArrayList<String> linesWithExpression = new ArrayList<>();
         HashMap<String, String> varsAndValues = new HashMap<>();
 
-        yamlReader.read(linesWithExpression, varsAndValues);
+        yamlReader.processInput(linesWithExpression, varsAndValues);
 
         assertEquals(1, varsAndValues.size());
         assertEquals("10", varsAndValues.get("var1"));
@@ -33,7 +33,7 @@ public class YAMLReaderTest extends TestCase {
         ArrayList<String> linesWithExpression = new ArrayList<>();
         HashMap<String, String> varsAndValues = new HashMap<>();
 
-        yamlReader.read(linesWithExpression, varsAndValues);
+        yamlReader.processInput(linesWithExpression, varsAndValues);
 
         assertEquals(2, varsAndValues.size());
         assertEquals("10", varsAndValues.get("var1"));
@@ -48,7 +48,7 @@ public class YAMLReaderTest extends TestCase {
         ArrayList<String> linesWithExpression = new ArrayList<>();
         HashMap<String, String> varsAndValues = new HashMap<>();
 
-        yamlReader.read(linesWithExpression, varsAndValues);
+        yamlReader.processInput(linesWithExpression, varsAndValues);
 
         assertTrue(varsAndValues.isEmpty());
         assertTrue(linesWithExpression.contains("someExpression"));
@@ -62,7 +62,7 @@ public class YAMLReaderTest extends TestCase {
         ArrayList<String> linesWithExpression = new ArrayList<>();
         HashMap<String, String> varsAndValues = new HashMap<>();
 
-        yamlReader.read(linesWithExpression, varsAndValues);
+        yamlReader.processInput(linesWithExpression, varsAndValues);
 
         assertEquals(1, varsAndValues.size());
         assertEquals("20", varsAndValues.get("validVar"));
@@ -76,7 +76,7 @@ public class YAMLReaderTest extends TestCase {
         ArrayList<String> linesWithExpression = new ArrayList<>();
         HashMap<String, String> varsAndValues = new HashMap<>();
 
-        yamlReader.read(linesWithExpression, varsAndValues);
+        yamlReader.processInput(linesWithExpression, varsAndValues);
 
         assertEquals(2, varsAndValues.size());
         assertEquals("100", varsAndValues.get("var1"));

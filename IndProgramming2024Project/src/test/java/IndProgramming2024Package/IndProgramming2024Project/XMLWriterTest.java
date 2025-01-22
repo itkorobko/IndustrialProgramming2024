@@ -1,6 +1,7 @@
 package IndProgramming2024Package.IndProgramming2024Project;
 
 import junit.framework.TestCase;
+import readersAndWriters.XMLOutputMaker;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -8,13 +9,13 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import org.mockito.Mockito;
 public class XMLWriterTest extends TestCase {
-	 private XMLWriter xmlWriter;
+	 private XMLOutputMaker xmlWriter;
 	    private StringWriter stringWriter;
 
 	    @Override
 	    protected void setUp() throws Exception {
 	        super.setUp();
-	        xmlWriter = new XMLWriter();
+	        xmlWriter = new XMLOutputMaker();
 	        stringWriter = new StringWriter();
 	        xmlWriter.setWriter(new PrintWriter(stringWriter));
 	    }
@@ -23,7 +24,7 @@ public class XMLWriterTest extends TestCase {
 	        HashMap<String, Double> expressionsAndResults = new HashMap<>();
 	        expressionsAndResults.put("2 + 2", 4.0);
 
-	        xmlWriter.write(expressionsAndResults);
+	        xmlWriter.makeOutput(expressionsAndResults);
 
 	        String expectedOutput = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" +
 	                "<expressions_and_results>\n" +
@@ -42,7 +43,7 @@ public class XMLWriterTest extends TestCase {
 	        expressionsAndResults.put("2 + 2", 4.0);
 	        expressionsAndResults.put("3 * 3", 9.0);
 
-	        xmlWriter.write(expressionsAndResults);
+	        xmlWriter.makeOutput(expressionsAndResults);
 
 	        String expectedOutput = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" +
 	                "<expressions_and_results>\n" +
@@ -62,7 +63,7 @@ public class XMLWriterTest extends TestCase {
 	    public void testWriteEmptyMap() throws Exception {
 	        HashMap<String, Double> expressionsAndResults = new HashMap<>();
 
-	        xmlWriter.write(expressionsAndResults);
+	        xmlWriter.makeOutput(expressionsAndResults);
 
 	        String expectedOutput = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" +
 	                "<expressions_and_results/>";

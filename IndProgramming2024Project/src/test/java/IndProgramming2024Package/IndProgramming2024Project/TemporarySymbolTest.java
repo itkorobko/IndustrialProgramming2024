@@ -2,6 +2,7 @@ package IndProgramming2024Package.IndProgramming2024Project;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
+import readersAndWriters.TemporarySymbol;
 
 public class TemporarySymbolTest extends TestCase {
 

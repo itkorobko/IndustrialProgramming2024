@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import junit.framework.TestCase;
-
+import readersAndWriters.JSONInputProcessor;
 public class JSONReaderTest extends TestCase {
- private JSONReader jsonReader;
+ private JSONInputProcessor jsonReader;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        jsonReader = new JSONReader();
+        jsonReader = new JSONInputProcessor();
     }
 
     public void testReadWithStringValues() throws Exception {
@@ -19,7 +19,7 @@ public class JSONReaderTest extends TestCase {
         jsonReader.setContent(jsonContent);
         ArrayList<String> linesWithExpression = new ArrayList<>();
         HashMap<String, String> varsAndValues = new HashMap<>();
-        jsonReader.read(linesWithExpression, varsAndValues);
+        jsonReader.processInput(linesWithExpression, varsAndValues);
         assertEquals(2, linesWithExpression.size());
         assertEquals("value1", linesWithExpression.get(0));
         assertEquals("value2", linesWithExpression.get(1));
@@ -32,7 +32,7 @@ public class JSONReaderTest extends TestCase {
         jsonReader.setContent(jsonContent);
         ArrayList<String> linesWithExpression = new ArrayList<>();
         HashMap<String, String> varsAndValues = new HashMap<>();
-        jsonReader.read(linesWithExpression, varsAndValues);
+        jsonReader.processInput(linesWithExpression, varsAndValues);
         assertEquals(0, linesWithExpression.size());
         assertEquals(0, varsAndValues.size());
     }
@@ -42,7 +42,7 @@ public class JSONReaderTest extends TestCase {
         jsonReader.setContent(jsonContent);
         ArrayList<String> linesWithExpression = new ArrayList<>();
         HashMap<String, String> varsAndValues = new HashMap<>();
-        jsonReader.read(linesWithExpression, varsAndValues);
+        jsonReader.processInput(linesWithExpression, varsAndValues);
         assertEquals(0, linesWithExpression.size());
         assertEquals(0, varsAndValues.size());
     }
